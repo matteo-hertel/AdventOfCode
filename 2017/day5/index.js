@@ -45,15 +45,6 @@ function tidyStringToArray(str) {
     .map(i => parseInt(i));
 }
 
-function incrementOnIndex(arr, i) {
-  arr[i] = arr[i] + 1;
-  return arr;
-}
-
-function incrementIndex(index, value) {
-  return (index + value) - 1;
-}
-
 function processIntstructions1(arr, index, count) {
   while(index >= 0 && index < arr.length) {
         index += arr[index]++;
