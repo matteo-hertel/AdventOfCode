@@ -1,10 +1,13 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
-func TestGreetings(t *testing.T) {
-	greeting := Greetings()
-	if greeting != "vim-go" {
-		t.Error("Expect Greetings to be 'vim-go' but got", greeting)
+func TestSumOfslice(t *testing.T) {
+	input := []int{1, -1, 3, 50, -11}
+	sum := SumFrequencies(&input)
+	if sum != 42 {
+		t.Error("Expect sum  to be 42 but got", sum)
 	}
 }
