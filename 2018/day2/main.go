@@ -15,22 +15,26 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	getCommonLetters := getCommonLettersInPool(ids)
-	fmt.Println(getCommonLetters)
-	//checksum := CalculateChecksum(ids)
-	//fmt.Println("Checksum: ", checksum)
+
+	checksum := CalculateChecksum(ids)
+	commonLetters := ProcessIds(ids)
+
+	fmt.Println("Checksum: ", checksum)
+	fmt.Println("Common Letters: ", commonLetters)
 }
-func getCommonLettersInPool(pool []string) []string {
-	for _, i := range pool {
-		str1, str2, _ := getStringWith1Distance(pool, i)
+
+func ProcessIds(ids []string) []string {
+	for _, id := range ids {
+		str1, str2, _ := GetStringWithDistance(1, ids, id)
+
 		if str1 != "" && str2 != "" {
-			fmt.Println(str1, str2)
-			return getCommonLetters(str1, str2)
+			return GetCommonLetters(str1, str2)
 		}
 	}
 	return []string{}
 }
-func getCommonLetters(str1 string, str2 string) []string {
+
+func GetCommonLetters(str1 string, str2 string) []string {
 	commonString := []string{}
 
 	for _, i := range str1 {
@@ -40,11 +44,11 @@ func getCommonLetters(str1 string, str2 string) []string {
 	}
 	return commonString
 }
-func getStringWith1Distance(stringPool []string, str string) (string, string, error) {
-	for _, i := range stringPool {
-		res, _ := StringDistance(i, str, 1)
-		if res == 1 {
-			return str, i, nil
+func GetStringWithDistance(distance int, stringPool []string, baseString string) (string, string, error) {
+	for _, currentString := range stringPool {
+		computedDistance, _ := StringDistance(currentString, baseString, distance)
+		if computedDistance == 1 {
+			return baseString, currentString, nil
 		}
 	}
 	return "", "", errors.New("No with valid distance found")
