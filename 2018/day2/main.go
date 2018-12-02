@@ -2,9 +2,11 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -13,12 +15,55 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	checksum := CalculateChecksum(ids)
-	fmt.Println("Checksum: ", checksum)
+	getCommonLetters := getCommonLettersInPool(ids)
+	fmt.Println(getCommonLetters)
+	//checksum := CalculateChecksum(ids)
+	//fmt.Println("Checksum: ", checksum)
+}
+func getCommonLettersInPool(pool []string) []string {
+	for _, i := range pool {
+		str1, str2, _ := getStringWith1Distance(pool, i)
+		if str1 != "" && str2 != "" {
+			fmt.Println(str1, str2)
+			return getCommonLetters(str1, str2)
+		}
+	}
+	return []string{}
+}
+func getCommonLetters(str1 string, str2 string) []string {
+	commonString := []string{}
+
+	for _, i := range str1 {
+		if strings.Contains(str2, string(i)) {
+			commonString = append(commonString, string(i))
+		}
+	}
+	return commonString
+}
+func getStringWith1Distance(stringPool []string, str string) (string, string, error) {
+	for _, i := range stringPool {
+		res, _ := StringDistance(i, str, 1)
+		if res == 1 {
+			return str, i, nil
+		}
+	}
+	return "", "", errors.New("No with valid distance found")
+}
+
+func StringDistance(str1 string, str2 string, maxDistance int) (int, error) {
+	diff := 0
+	for i := 0; i < len(str1); i++ {
+		if str1[i] != str2[i] {
+			diff++
+			if diff > maxDistance {
+				return 0, errors.New("Max distance exceeded")
+			}
+		}
+	}
+	return diff, nil
 }
 
 func CalculateChecksum(ids []string) int {
-
 	twos := 0
 	threes := 0
 
