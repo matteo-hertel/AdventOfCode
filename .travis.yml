@@ -4,6 +4,7 @@ matrix:
     - language: go
       go:
         - "1.11"
+      install: true
       before_script:
         - cd 2018
       script:
