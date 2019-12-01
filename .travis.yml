@@ -1,18 +1,18 @@
-language: go
+matrix:
+  include:
+    - language: go
+      go:
+        - "1.13"
+      before_script:
+        - cd 2018
+      script:
+        - ./test.sh
 
-go:
-  - 1.11.x
-
-# Only clone the most recent commit.
-git:
-  depth: 1
-
-# Skip the install step. Don't `go get` dependencies. Only build with the code
-# in vendor/
-install: true
-
-before_script:
-  - cd 2018 
-
-script:
-  - ./test.sh 
+    - language: nodejs
+      node:
+        - 12
+      before_script:
+        - cd 2019
+        - yarn
+      script:
+        - yarn test

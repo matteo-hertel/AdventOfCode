@@ -1,0 +1,21 @@
+{
+  "name": "advent-of-code-2019",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "author": "Matteo Hertel <matteo@hertel.dev>",
+  "license": "MIT",
+  "scripts": {
+    "ts": "ts-node",
+    "watch": "nodemon --watch ./**/*.ts --exec yarn ts",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.14",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.1",
+    "ts-jest": "^24.2.0",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.2"
+  }
+}
