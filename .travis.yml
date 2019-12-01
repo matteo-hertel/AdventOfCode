@@ -9,8 +9,8 @@ matrix:
       script:
         - ./test.sh
 
-    - language: nodejs
-      node:
+    - language: node_js
+      node_js:
         - "lts/erbium"
       before_script:
         - cd 2019
