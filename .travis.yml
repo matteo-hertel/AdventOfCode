@@ -1,14 +1,14 @@
 matrix:
   fast_finish: true
   include:
-    - language: go
-      go:
-        - "1.11"
-      install: true
-      before_script:
-        - cd 2018
-      script:
-        - ./test.sh
+    # - language: go
+    #   go:
+    #     - "1.11"
+    #   install: true
+    #   before_script:
+    #     - cd 2018
+    #   script:
+    #     - ./test.sh
 
     - language: node_js
       node_js:

@@ -3,6 +3,7 @@ const { input } = rawInput;
 
 const solution1 = input.reduce(calculateFuelRequirement, 0);
 const solution2 = input.reduce(calculateRecursiveFuelRequirement, 0);
+
 console.log({ solution1, solution2 });
 
 function calculateFuelRequirement(acc: number, input: number): number {
