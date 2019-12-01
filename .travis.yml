@@ -1,8 +1,9 @@
 matrix:
+  fast_finish: true
   include:
     - language: go
       go:
-        - "1.13"
+        - "1.11"
       before_script:
         - cd 2018
       script:
@@ -10,7 +11,7 @@ matrix:
 
     - language: nodejs
       node:
-        - 12
+        - "lts/erbium"
       before_script:
         - cd 2019
         - yarn
