@@ -5,8 +5,7 @@
   "author": "Matteo Hertel <matteo@hertel.dev>",
   "license": "MIT",
   "scripts": {
-    "ts": "ts-node",
-    "watch": "nodemon --watch ./**/*.ts --exec yarn ts",
+    "watch": "nodemon --watch '**/*.ts' -e ts --exec ts-node",
     "test": "jest"
   },
   "devDependencies": {
