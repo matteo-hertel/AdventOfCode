@@ -12,9 +12,9 @@ matrix:
 
     - language: node_js
       node_js:
-        - "lts/erbium"
+        - "lts/gallium"
       before_script:
-        - cd 2019
+        - cd 2021
         - yarn
       script:
         - yarn test
